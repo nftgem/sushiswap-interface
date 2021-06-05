@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk'
+import { ChainId } from 'sdk'
 import INCH from '../../assets/kashi/tokens/1inch-square.jpg'
 import AAVE from '../../assets/kashi/tokens/aave-square.jpg'
 // todo: move these into sushiswap/assets/square
@@ -295,20 +295,20 @@ const TOKEN_ICONS: { [chainId in ChainId]?: any } = {
         [String('0x172370d5Cd63279eFa6d502DAB29171933a610AF').toLowerCase()]: CRV,
         [String('0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39').toLowerCase()]: LINK
     },
-    [ChainId.HECO]: {
-        [String('0x202b4936fE1a82A4965220860aE46d7d3939Bb25').toLowerCase()]: AAVE,
-        [String('0x64FF637fB478863B7468bc97D30a5bF3A428a1fD').toLowerCase()]: ETH,
-        [String('0xeF3CEBD77E0C52cb6f60875d9306397B5Caca375').toLowerCase()]: BCH, // BCH
-        [String('0x66a79D23E58475D2738179Ca52cd0b41d73f0BEa').toLowerCase()]: BTC, // BTC
-        [String('0xA2c49cEe16a5E5bDEFDe931107dc1fae9f7773E3').toLowerCase()]: DOT, // DOT
-        [String('0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F').toLowerCase()]: HT, // HT
-        [String('0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047').toLowerCase()]: HUSD, // HUSD
-        [String('0xecb56cf772B5c9A6907FB7d32387Da2fCbfB63b4').toLowerCase()]: LTC, // LTC
-        [String('0x25D2e80cB6B86881Fd7e07dd263Fb79f4AbE033c').toLowerCase()]: MDX, // MDX
-        [String('0x777850281719d5a96C29812ab72f822E0e09F3Da').toLowerCase()]: SNX, // SNX
-        [String('0x22C54cE8321A4015740eE1109D9cBc25815C46E6').toLowerCase()]: UNI,
-        [String('0xa71EdC38d189767582C38A3145b5873052c3e47a').toLowerCase()]: USDT
-    }
+    // [ChainId.HECO]: {
+    //     [String('0x202b4936fE1a82A4965220860aE46d7d3939Bb25').toLowerCase()]: AAVE,
+    //     [String('0x64FF637fB478863B7468bc97D30a5bF3A428a1fD').toLowerCase()]: ETH,
+    //     [String('0xeF3CEBD77E0C52cb6f60875d9306397B5Caca375').toLowerCase()]: BCH, // BCH
+    //     [String('0x66a79D23E58475D2738179Ca52cd0b41d73f0BEa').toLowerCase()]: BTC, // BTC
+    //     [String('0xA2c49cEe16a5E5bDEFDe931107dc1fae9f7773E3').toLowerCase()]: DOT, // DOT
+    //     [String('0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F').toLowerCase()]: HT, // HT
+    //     [String('0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047').toLowerCase()]: HUSD, // HUSD
+    //     [String('0xecb56cf772B5c9A6907FB7d32387Da2fCbfB63b4').toLowerCase()]: LTC, // LTC
+    //     [String('0x25D2e80cB6B86881Fd7e07dd263Fb79f4AbE033c').toLowerCase()]: MDX, // MDX
+    //     [String('0x777850281719d5a96C29812ab72f822E0e09F3Da').toLowerCase()]: SNX, // SNX
+    //     [String('0x22C54cE8321A4015740eE1109D9cBc25815C46E6').toLowerCase()]: UNI,
+    //     [String('0xa71EdC38d189767582C38A3145b5873052c3e47a').toLowerCase()]: USDT
+    // }
 }
 
 function getTokenIcon(address: string, chainId: ChainId = 1): string {

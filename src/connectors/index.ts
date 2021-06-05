@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/sdk'
+import { ChainId } from 'sdk'
 import { FortmaticConnector } from './Fortmatic'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { LatticeConnector } from '@web3-react/lattice-connector'
@@ -21,18 +21,18 @@ const RPC = {
     [ChainId.MATIC]: 'https://rpc-mainnet.maticvigil.com',
     //'https://matic-mainnet.chainstacklabs.com/',
     [ChainId.MATIC_TESTNET]: 'https://rpc-mumbai.matic.today',
-    [ChainId.XDAI]: 'https://rpc.xdaichain.com',
+    // [ChainId.XDAI]: 'https://rpc.xdaichain.com',
     [ChainId.BSC]: 'https://bsc-dataseed.binance.org/',
     [ChainId.BSC_TESTNET]: 'https://data-seed-prebsc-2-s3.binance.org:8545',
-    [ChainId.MOONBASE]: 'https://rpc.testnet.moonbeam.network',
-    [ChainId.AVALANCHE]: 'https://api.avax.network/ext/bc/C/rpc',
-    [ChainId.FUJI]: 'https://api.avax-test.network/ext/bc/C/rpc',
-    [ChainId.HECO]: 'https://http-mainnet.hecochain.com',
-    [ChainId.HECO_TESTNET]: 'https://http-testnet.hecochain.com',
-    [ChainId.HARMONY]: 'https://explorer.harmony.one',
-    [ChainId.HARMONY_TESTNET]: 'https://explorer.pops.one',
-    [ChainId.OKEX]: 'https://exchainrpc.okex.org',
-    [ChainId.OKEX_TESTNET]: 'https://exchaintestrpc.okex.org'
+    // [ChainId.MOONBASE]: 'https://rpc.testnet.moonbeam.network',
+    // [ChainId.AVALANCHE]: 'https://api.avax.network/ext/bc/C/rpc',
+    // [ChainId.FUJI]: 'https://api.avax-test.network/ext/bc/C/rpc',
+    // [ChainId.HECO]: 'https://http-mainnet.hecochain.com',
+    // [ChainId.HECO_TESTNET]: 'https://http-testnet.hecochain.com',
+    // [ChainId.HARMONY]: 'https://explorer.harmony.one',
+    // [ChainId.HARMONY_TESTNET]: 'https://explorer.pops.one',
+    // [ChainId.OKEX]: 'https://exchainrpc.okex.org',
+    // [ChainId.OKEX_TESTNET]: 'https://exchaintestrpc.okex.org'
 }
 
 export const network = new NetworkConnector({
@@ -56,18 +56,18 @@ export const injected = new InjectedConnector({
         4002, // fantom testnet
         137, // matic
         80001, // matic testnet
-        100, // xdai
+        // 100, // xdai
         56, // binance smart chain
         97, // binance smart chain testnet
-        1287, // moonbase
-        43114, // avalanche
-        43113, // fuji
-        128, // heco
-        256, // heco testnet
-        1666600000, // harmony
-        1666700000, // harmony testnet
-        66, // okex testnet
-        65 // okex testnet
+        // 1287, // moonbase
+        // 43114, // avalanche
+        // 43113, // fuji
+        // 128, // heco
+        // 256, // heco testnet
+        // 1666600000, // harmony
+        // 1666700000, // harmony testnet
+        // 66, // okex testnet
+        // 65 // okex testnet
     ]
 })
 

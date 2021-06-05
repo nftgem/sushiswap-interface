@@ -1,4 +1,4 @@
-import { ChainId, Currency, CurrencyAmount, ETHER, JSBI, Percent, ROUTER_ADDRESS, Token } from '@sushiswap/sdk'
+import { ChainId, Currency, CurrencyAmount, ETHER, JSBI, Percent, ROUTER_ADDRESS, Token } from 'sdk'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 
 import { AddressZero } from '@ethersproject/constants'
@@ -409,10 +409,10 @@ const chains: ChainObject = {
         chainName: 'testnet',
         builder: builders.fantom
     },
-    [ChainId.XDAI]: {
-        chainName: 'xdai',
-        builder: builders.xdai
-    },
+    // [ChainId.XDAI]: {
+    //     chainName: 'xdai',
+    //     builder: builders.xdai
+    // },
     [ChainId.BSC]: {
         chainName: '',
         builder: builders.bscscan
@@ -421,46 +421,46 @@ const chains: ChainObject = {
         chainName: 'testnet',
         builder: builders.bscscan
     },
-    [ChainId.ARBITRUM]: {
-        chainName: 'arbitrum',
-        builder: builders.arbitrum
-    },
-    [ChainId.MOONBASE]: {
-        chainName: '',
-        builder: builders.moonbase
-    },
-    [ChainId.AVALANCHE]: {
-        chainName: '',
-        builder: builders.avalanche
-    },
-    [ChainId.FUJI]: {
-        chainName: 'test',
-        builder: builders.avalanche
-    },
-    [ChainId.HECO]: {
-        chainName: '',
-        builder: builders.heco
-    },
-    [ChainId.HECO_TESTNET]: {
-        chainName: 'testnet',
-        builder: builders.heco
-    },
-    [ChainId.HARMONY]: {
-        chainName: '',
-        builder: builders.harmony
-    },
-    [ChainId.HARMONY_TESTNET]: {
-        chainName: '',
-        builder: builders.harmonyTestnet
-    },
-    [ChainId.OKEX]: {
-        chainName: '',
-        builder: builders.okex
-    },
-    [ChainId.OKEX_TESTNET]: {
-        chainName: '',
-        builder: builders.okexTestnet
-    }
+    // [ChainId.ARBITRUM]: {
+    //     chainName: 'arbitrum',
+    //     builder: builders.arbitrum
+    // },
+    // [ChainId.MOONBASE]: {
+    //     chainName: '',
+    //     builder: builders.moonbase
+    // },
+    // [ChainId.AVALANCHE]: {
+    //     chainName: '',
+    //     builder: builders.avalanche
+    // },
+    // [ChainId.FUJI]: {
+    //     chainName: 'test',
+    //     builder: builders.avalanche
+    // },
+    // [ChainId.HECO]: {
+    //     chainName: '',
+    //     builder: builders.heco
+    // },
+    // [ChainId.HECO_TESTNET]: {
+    //     chainName: 'testnet',
+    //     builder: builders.heco
+    // },
+    // [ChainId.HARMONY]: {
+    //     chainName: '',
+    //     builder: builders.harmony
+    // },
+    // [ChainId.HARMONY_TESTNET]: {
+    //     chainName: '',
+    //     builder: builders.harmonyTestnet
+    // },
+    // [ChainId.OKEX]: {
+    //     chainName: '',
+    //     builder: builders.okex
+    // },
+    // [ChainId.OKEX_TESTNET]: {
+    //     chainName: '',
+    //     builder: builders.okexTestnet
+    // }
 }
 
 export function getExplorerLink(

@@ -1,4 +1,4 @@
-import { Trade, TradeType, ChainId } from '@sushiswap/sdk'
+import { Trade, TradeType, ChainId } from 'sdk'
 import { useActiveWeb3React } from 'hooks/useActiveWeb3React'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
@@ -116,7 +116,7 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
 
                     {!showRoute &&
                         chainId &&
-                        [ChainId.MAINNET, ChainId.BSC, ChainId.FANTOM, ChainId.XDAI, ChainId.MATIC].includes(
+                        [ChainId.MAINNET, ChainId.BSC, ChainId.FANTOM, /*ChainId.XDAI,*/ ChainId.MATIC].includes(
                             chainId
                         ) && (
                             <div className="flex justify-center pt-3 px-4">

@@ -1,4 +1,4 @@
-import { ChainId, Currency } from '@sushiswap/sdk'
+import { ChainId, Currency } from 'sdk'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Logo from '../assets/images/logo.png'
@@ -101,7 +101,7 @@ function AppBar(): JSX.Element {
                                                 [
                                                     ChainId.MAINNET,
                                                     ChainId.BSC,
-                                                    ChainId.XDAI,
+                                                    // ChainId.XDAI,
                                                     ChainId.FANTOM,
                                                     ChainId.MATIC
                                                 ].includes(chainId) && (
@@ -286,17 +286,11 @@ function AppBar(): JSX.Element {
                                         </div>
                                         <LanguageSwitch />
 
-                                        {
-                                            chainId && [
-                                                ChainId.GÖRLI,
-                                                ChainId.KOVAN,
-                                                ChainId.RINKEBY,
-                                                ChainId.ROPSTEN
-                                            ].includes(chainId) && (
-                                                <Web3Faucet />
-                                            )
-                                        }
-                                        
+                                        {chainId &&
+                                            [ChainId.GÖRLI, ChainId.KOVAN, ChainId.RINKEBY, ChainId.ROPSTEN].includes(
+                                                chainId
+                                            ) && <Web3Faucet />}
+
                                         <MoreMenu />
                                     </div>
                                 </div>
@@ -372,7 +366,7 @@ function AppBar(): JSX.Element {
                                     [
                                         ChainId.MAINNET,
                                         ChainId.BSC,
-                                        ChainId.XDAI,
+                                        // ChainId.XDAI,
                                         ChainId.FANTOM,
                                         ChainId.MATIC
                                     ].includes(chainId) && (

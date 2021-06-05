@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Percent, Token, WETH } from '@sushiswap/sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from 'sdk'
 import { fortmatic, injected, lattice, portis, torus, walletconnect, walletlink } from '../connectors'
 
 import { AbstractConnector } from '@web3-react/abstract-connector'
@@ -82,19 +82,19 @@ const WRAPPED_NATIVE_ONLY: ChainTokenList = {
     [ChainId.FANTOM_TESTNET]: [WETH[ChainId.FANTOM_TESTNET]],
     [ChainId.MATIC]: [WETH[ChainId.MATIC]],
     [ChainId.MATIC_TESTNET]: [WETH[ChainId.MATIC_TESTNET]],
-    [ChainId.XDAI]: [WETH[ChainId.XDAI]],
+    // [ChainId.XDAI]: [WETH[ChainId.XDAI]],
     [ChainId.BSC]: [WETH[ChainId.BSC]],
     [ChainId.BSC_TESTNET]: [WETH[ChainId.BSC_TESTNET]],
-    [ChainId.ARBITRUM]: [WETH[ChainId.ARBITRUM]],
-    [ChainId.MOONBASE]: [WETH[ChainId.MOONBASE]],
-    [ChainId.AVALANCHE]: [WETH[ChainId.AVALANCHE]],
-    [ChainId.FUJI]: [WETH[ChainId.FUJI]],
-    [ChainId.HECO]: [WETH[ChainId.HECO]],
-    [ChainId.HECO_TESTNET]: [WETH[ChainId.HECO_TESTNET]],
-    [ChainId.HARMONY]: [WETH[ChainId.HARMONY]],
-    [ChainId.HARMONY_TESTNET]: [WETH[ChainId.HARMONY_TESTNET]],
-    [ChainId.OKEX]: [WETH[ChainId.OKEX]],
-    [ChainId.OKEX_TESTNET]: [WETH[ChainId.OKEX_TESTNET]]
+    // [ChainId.ARBITRUM]: [WETH[ChainId.ARBITRUM]],
+    // [ChainId.MOONBASE]: [WETH[ChainId.MOONBASE]],
+    // [ChainId.AVALANCHE]: [WETH[ChainId.AVALANCHE]],
+    // [ChainId.FUJI]: [WETH[ChainId.FUJI]],
+    // [ChainId.HECO]: [WETH[ChainId.HECO]],
+    // [ChainId.HECO_TESTNET]: [WETH[ChainId.HECO_TESTNET]],
+    // [ChainId.HARMONY]: [WETH[ChainId.HARMONY]],
+    // [ChainId.HARMONY_TESTNET]: [WETH[ChainId.HARMONY_TESTNET]],
+    // [ChainId.OKEX]: [WETH[ChainId.OKEX]],
+    // [ChainId.OKEX_TESTNET]: [WETH[ChainId.OKEX_TESTNET]]
 }
 
 // Default Ethereum chain tokens
@@ -426,5 +426,5 @@ export const ANALYTICS_URL: { [chainId in ChainId]?: string } = {
     [ChainId.MATIC]: 'https://analytics-polygon.sushi.com',
     [ChainId.FANTOM]: 'https://analytics-ftm.sushi.com',
     [ChainId.BSC]: 'https://analytics-bsc.sushi.com',
-    [ChainId.XDAI]: 'https://analytics-xdai.sushi.com'
+    // [ChainId.XDAI]: 'https://analytics-xdai.sushi.com'
 }

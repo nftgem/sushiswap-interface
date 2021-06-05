@@ -1,4 +1,4 @@
-import { ChainId, Currency, ETHER, Token } from '@sushiswap/sdk'
+import { ChainId, Currency, ETHER, Token } from 'sdk'
 import React, { useMemo } from 'react'
 
 import AvalancheLogo from '../../assets/images/avalanche-logo.png'
@@ -54,18 +54,18 @@ const logo: { readonly [chainId in ChainId]?: string } = {
     [ChainId.FANTOM_TESTNET]: FantomLogo,
     [ChainId.MATIC]: MaticLogo,
     [ChainId.MATIC_TESTNET]: MaticLogo,
-    [ChainId.XDAI]: xDaiLogo,
+    // [ChainId.XDAI]: xDaiLogo,
     [ChainId.BSC]: BinanceCoinLogo,
-    [ChainId.BSC_TESTNET]: BinanceCoinLogo,
-    [ChainId.MOONBASE]: MoonbeamLogo,
-    [ChainId.AVALANCHE]: AvalancheLogo,
-    [ChainId.FUJI]: AvalancheLogo,
-    [ChainId.HECO]: HecoLogo,
-    [ChainId.HECO_TESTNET]: HecoLogo,
-    [ChainId.HARMONY]: HarmonyLogo,
-    [ChainId.HARMONY_TESTNET]: HarmonyLogo,
-    [ChainId.OKEX]: OKExLogo,
-    [ChainId.OKEX_TESTNET]: OKExLogo
+    [ChainId.BSC_TESTNET]: BinanceCoinLogo
+    // [ChainId.MOONBASE]: MoonbeamLogo,
+    // [ChainId.AVALANCHE]: AvalancheLogo,
+    // [ChainId.FUJI]: AvalancheLogo,
+    // [ChainId.HECO]: HecoLogo,
+    // [ChainId.HECO_TESTNET]: HecoLogo,
+    // [ChainId.HARMONY]: HarmonyLogo,
+    // [ChainId.HARMONY_TESTNET]: HarmonyLogo,
+    // [ChainId.OKEX]: OKExLogo,
+    // [ChainId.OKEX_TESTNET]: OKExLogo
 }
 
 export default function CurrencyLogo({
