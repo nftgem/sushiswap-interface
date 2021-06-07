@@ -93,6 +93,7 @@ export function useSwapCallback(
     allowedSlippage: number = INITIAL_ALLOWED_SLIPPAGE, // in bips
     recipientAddressOrName: string | null // the ENS name or address of the recipient of the trade, or null if swap should be returned to sender
 ): { state: SwapCallbackState; callback: null | (() => Promise<string>); error: string | null } {
+    console.log("*** USE SWAP CALLBACK");
     const { i18n } = useLingui()
 
     const { account, chainId, library } = useActiveWeb3React()
@@ -129,6 +130,7 @@ export function useSwapCallback(
 
                         return contract.estimateGas[methodName](...args, options)
                             .then(gasEstimate => {
+                                console.log("*************************RETURNING", {call, gasEstimate})
                                 return {
                                     call,
                                     gasEstimate

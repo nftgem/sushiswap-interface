@@ -177,6 +177,6 @@
     "license": "GPL-3.0-or-later",
     "dependencies": {
         "@lufycz/sushi-data": "^2.0.0-canary-21",
-        "@nftgem/default-token-list": "https://github.com/nftgem/default-token-list"
+        "@nftgem/default-token-list": "https://github.com/nftgem/default-token-list/"
     }
 }

@@ -133,6 +133,7 @@ export default function AddLiquidity({
     const addTransaction = useTransactionAdder()
 
     async function onAdd() {
+        console.log('ONADD')
         if (!chainId || !library || !account) return
         const router = getRouterContract(chainId, library, account)
 
@@ -151,6 +152,7 @@ export default function AddLiquidity({
             args: Array<string | string[] | number>,
             value: BigNumber | null
         if (currencyA === ETHER || currencyB === ETHER) {
+            console.log('Using addLiquidityETH')
             const tokenBIsETH = currencyB === ETHER
             estimate = router.estimateGas.addLiquidityETH
             method = router.addLiquidityETH
@@ -164,6 +166,7 @@ export default function AddLiquidity({
             ]
             value = BigNumber.from((tokenBIsETH ? parsedAmountB : parsedAmountA).raw.toString())
         } else {
+            console.log('Using addLiquidity')
             estimate = router.estimateGas.addLiquidity
             method = router.addLiquidity
             args = [
@@ -178,47 +181,55 @@ export default function AddLiquidity({
             ]
             value = null
         }
-
+        console.log('AddLiquidity', { method, estimate, args })
         setAttemptingTxn(true)
-        await estimate(...args, value ? { value } : {})
-            .then(estimatedGasLimit =>
-                method(...args, {
-                    ...(value ? { value } : {}),
-                    gasLimit: calculateGasMargin(estimatedGasLimit)
-                }).then(response => {
-                    setAttemptingTxn(false)
+        let gl: BigNumber = BigNumber.from(3000000)
+        console.log(`Estimating gas with ${method.name}`, { args, value })
+        try {
+            gl = await estimate(...args, value ? { value } : {})
+        } catch (e) {
+            console.log('ERROR estimating gas IS', { e })
+        }
+        // await estimate(...args, value ? { value } : {})
+        //     .then(estimatedGasLimit =>
+        console.log('GL IS', gl)
+        method(...args, {
+            ...(value ? { value } : {}),
+            gasLimit: calculateGasMargin(gl as BigNumber)
+        }).then(response => {
+            setAttemptingTxn(false)
 
-                    addTransaction(response, {
-                        summary:
-                            'Add ' +
-                            parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) +
-                            ' ' +
-                            currencies[Field.CURRENCY_A]?.getSymbol(chainId) +
-                            ' and ' +
-                            parsedAmounts[Field.CURRENCY_B]?.toSignificant(3) +
-                            ' ' +
-                            currencies[Field.CURRENCY_B]?.getSymbol(chainId)
-                    })
-
-                    setTxHash(response.hash)
-
-                    ReactGA.event({
-                        category: 'Liquidity',
-                        action: 'Add',
-                        label: [
-                            currencies[Field.CURRENCY_A]?.getSymbol(chainId),
-                            currencies[Field.CURRENCY_B]?.getSymbol(chainId)
-                        ].join('/')
-                    })
-                })
-            )
-            .catch(error => {
-                setAttemptingTxn(false)
-                // we only care if the error is something _other_ than the user rejected the tx
-                if (error?.code !== 4001) {
-                    console.error(error)
-                }
+            addTransaction(response, {
+                summary:
+                    'Add ' +
+                    parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) +
+                    ' ' +
+                    currencies[Field.CURRENCY_A]?.getSymbol(chainId) +
+                    ' and ' +
+                    parsedAmounts[Field.CURRENCY_B]?.toSignificant(3) +
+                    ' ' +
+                    currencies[Field.CURRENCY_B]?.getSymbol(chainId)
             })
+
+            setTxHash(response.hash)
+
+            ReactGA.event({
+                category: 'Liquidity',
+                action: 'Add',
+                label: [
+                    currencies[Field.CURRENCY_A]?.getSymbol(chainId),
+                    currencies[Field.CURRENCY_B]?.getSymbol(chainId)
+                ].join('/')
+            })
+        })
+        // )
+        // .catch(error => {
+        //     setAttemptingTxn(false)
+        //     // we only care if the error is something _other_ than the user rejected the tx
+        //     if (error?.code !== 4001) {
+        //         console.error(error)
+        //     }
+        // })
     }
 
     const modalHeader = () => {

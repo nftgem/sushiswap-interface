@@ -2664,9 +2664,9 @@
   resolved "https://registry.yarnpkg.com/@multiformats/base-x/-/base-x-4.0.1.tgz#95ff0fa58711789d53aefb2590a8b7a4e715d121"
   integrity sha512-eMk0b9ReBbV23xXU693TAIrLyeO5iTgBZGSJfpqriG8UkYvr/hC9u9pyMlAakDNHWmbhMZCDs6KQO0jzKD8OTw==
 
-"@nftgem/default-token-list@https://github.com/nftgem/default-token-list":
+"@nftgem/default-token-list@https://github.com/nftgem/default-token-list/":
   version "2.0.0"
-  resolved "https://github.com/nftgem/default-token-list#a227817c4c052c3e17f1bb9e4df86b6aee18c840"
+  resolved "https://github.com/nftgem/default-token-list/#7c2ea46ac5ec356b2f3f0f741b0212eed3760ed5"
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"

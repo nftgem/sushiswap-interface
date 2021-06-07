@@ -48,7 +48,7 @@ export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.RINKEBY]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
   [ChainId.GÖRLI]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
   [ChainId.KOVAN]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
-  [ChainId.FANTOM]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
+  [ChainId.FANTOM]: '0x1a17bf0d7c4B3FF294D0AC7c01587bbE05f2234F',
   [ChainId.FANTOM_TESTNET]: '',
   [ChainId.MATIC]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
   [ChainId.MATIC_TESTNET]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
@@ -74,7 +74,7 @@ export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.ROPSTEN]: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
   [ChainId.GÖRLI]: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
   [ChainId.KOVAN]: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
-  [ChainId.FANTOM]: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+  [ChainId.FANTOM]: '0x0d6E840340C0BBF1a35E3dC5277c9cEE4A84430f',
   [ChainId.FANTOM_TESTNET]: '',
   [ChainId.MATIC]: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
   [ChainId.MATIC_TESTNET]: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
@@ -120,6 +120,7 @@ export const SUSHI_ADDRESS: { [chainId in ChainId]: string } = {
   // [ChainId.OKEX_TESTNET]: ''
 }
 
+// enables the minting of new SUSHI token
 export const MASTERCHEF_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MAINNET]: '0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd',
   [ChainId.ROPSTEN]: '0x80C7DD17B01855a6D2347444a0FCC36136a314de',
@@ -146,6 +147,7 @@ export const MASTERCHEF_ADDRESS: { [chainId in ChainId]: string } = {
   // [ChainId.OKEX_TESTNET]: ''
 }
 
+// Susibar: sushi -> xSushi
 export const BAR_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MAINNET]: '0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272',
   [ChainId.ROPSTEN]: '0x1be211D8DA40BC0ae8719c6663307Bfc987b1d6c',
