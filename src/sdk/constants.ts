@@ -400,7 +400,7 @@ export const BORING_HELPER_ADDRESS = {
   // [ChainId.OKEX_TESTNET]: ''
 }
 
-export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
+export const MINIMUM_LIQUIDITY = JSBI.BigInt(1)
 
 // exports for internal consumption
 export const ZERO = JSBI.BigInt(0)

@@ -146,13 +146,13 @@ export default function AddLiquidity({
             [Field.CURRENCY_A]: calculateSlippageAmount(parsedAmountA, noLiquidity ? 0 : allowedSlippage)[0],
             [Field.CURRENCY_B]: calculateSlippageAmount(parsedAmountB, noLiquidity ? 0 : allowedSlippage)[0]
         }
-
+        let methodName = ''
         let estimate,
             method: (...args: any) => Promise<TransactionResponse>,
             args: Array<string | string[] | number>,
             value: BigNumber | null
         if (currencyA === ETHER || currencyB === ETHER) {
-            console.log('Using addLiquidityETH')
+            methodName = 'addLiquidityETH'
             const tokenBIsETH = currencyB === ETHER
             estimate = router.estimateGas.addLiquidityETH
             method = router.addLiquidityETH
@@ -166,7 +166,7 @@ export default function AddLiquidity({
             ]
             value = BigNumber.from((tokenBIsETH ? parsedAmountB : parsedAmountA).raw.toString())
         } else {
-            console.log('Using addLiquidity')
+            methodName = 'addLiquidity'
             estimate = router.estimateGas.addLiquidity
             method = router.addLiquidity
             args = [
@@ -181,55 +181,49 @@ export default function AddLiquidity({
             ]
             value = null
         }
-        console.log('AddLiquidity', { method, estimate, args })
+        console.log(`calling ${methodName}:`, { method, estimate, args, value })
         setAttemptingTxn(true)
-        let gl: BigNumber = BigNumber.from(3000000)
-        console.log(`Estimating gas with ${method.name}`, { args, value })
-        try {
-            gl = await estimate(...args, value ? { value } : {})
-        } catch (e) {
-            console.log('ERROR estimating gas IS', { e })
-        }
-        // await estimate(...args, value ? { value } : {})
-        //     .then(estimatedGasLimit =>
-        console.log('GL IS', gl)
-        method(...args, {
-            ...(value ? { value } : {}),
-            gasLimit: calculateGasMargin(gl as BigNumber)
-        }).then(response => {
-            setAttemptingTxn(false)
+        // const estimatedGasLimit
+        await estimate(...args, value ? { value } : {})
+            .then(estimatedGasLimit => {
+                console.log('estimate() returned gasLimit:', estimatedGasLimit.toString())
+                return method(...args, {
+                    ...(value ? { value } : {}),
+                    gasLimit: calculateGasMargin(estimatedGasLimit)
+                }).then(response => {
+                    setAttemptingTxn(false)
+                    const summary =
+                        'Add ' +
+                        parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) +
+                        ' ' +
+                        currencies[Field.CURRENCY_A]?.getSymbol(chainId) +
+                        ' and ' +
+                        parsedAmounts[Field.CURRENCY_B]?.toSignificant(3) +
+                        ' ' +
+                        currencies[Field.CURRENCY_B]?.getSymbol(chainId)
+                    console.log('add liquidity: ', { response, summary })
+                    addTransaction(response, { summary })
 
-            addTransaction(response, {
-                summary:
-                    'Add ' +
-                    parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) +
-                    ' ' +
-                    currencies[Field.CURRENCY_A]?.getSymbol(chainId) +
-                    ' and ' +
-                    parsedAmounts[Field.CURRENCY_B]?.toSignificant(3) +
-                    ' ' +
-                    currencies[Field.CURRENCY_B]?.getSymbol(chainId)
+                    setTxHash(response.hash)
+
+                    ReactGA.event({
+                        category: 'Liquidity',
+                        action: 'Add',
+                        label: [
+                            currencies[Field.CURRENCY_A]?.getSymbol(chainId),
+                            currencies[Field.CURRENCY_B]?.getSymbol(chainId)
+                        ].join('/')
+                    })
+                })
             })
-
-            setTxHash(response.hash)
-
-            ReactGA.event({
-                category: 'Liquidity',
-                action: 'Add',
-                label: [
-                    currencies[Field.CURRENCY_A]?.getSymbol(chainId),
-                    currencies[Field.CURRENCY_B]?.getSymbol(chainId)
-                ].join('/')
+            .catch(error => {
+                setAttemptingTxn(false)
+                console.log()
+                // we only care if the error is something _other_ than the user rejected the tx
+                if (error?.code !== 4001) {
+                    console.error(error)
+                }
             })
-        })
-        // )
-        // .catch(error => {
-        //     setAttemptingTxn(false)
-        //     // we only care if the error is something _other_ than the user rejected the tx
-        //     if (error?.code !== 4001) {
-        //         console.error(error)
-        //     }
-        // })
     }
 
     const modalHeader = () => {

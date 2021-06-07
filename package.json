@@ -153,6 +153,7 @@
         "prebuild": "lingui compile",
         "prestart": "lingui compile",
         "start": "cross-env PORT=3000 react-app-rewired start",
+        "start:https": "cross-env HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem PORT=3000 react-app-rewired start",
         "dev": "cross-env PORT=3001 react-app-rewired start",
         "build": "cross-env CI= GENERATE_SOURCEMAP=false react-app-rewired build",
         "build:sourcemap": "GENERATE_SOURCEMAP=true react-app-rewired build",
@@ -177,6 +178,7 @@
     "license": "GPL-3.0-or-later",
     "dependencies": {
         "@lufycz/sushi-data": "^2.0.0-canary-21",
-        "@nftgem/default-token-list": "https://github.com/nftgem/default-token-list/"
+        "@nftgem/default-token-list": "https://github.com/nftgem/default-token-list/",
+        "jsbi": "^3.1.4"
     }
 }
